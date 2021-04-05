@@ -26,4 +26,4 @@ The individual dataset files used in this repo can be found in [`weAreEngineers/
 From the main project directory, `pip install -r WeAreEngineers/requirements.txt`
 
 # How To Run
-From the main project directory, execute `python3 run.py`
+From the main project directory, execute `python run.py`
