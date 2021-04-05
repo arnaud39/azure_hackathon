@@ -30,9 +30,9 @@ def get_model():
         for _ in range(n_hidden):
             model.add(Dense(n_neurons,
                             activation=activation,
-                            kernel_regularizer=regularizers.l1_l2(l1=1e-5, l2=1e-5),
-                            bias_regularizer=regularizers.l2(1e-5),
-                            activity_regularizer=regularizers.l2(1e-5)))
+                            kernel_regularizer=regularizers.l1_l2(l1=4e-2, l2=2e-2),
+                            bias_regularizer=regularizers.l2(2e-2),
+                            activity_regularizer=regularizers.l2(2e-2)))
         model.add(Dense(1, activation="relu"))
         model.compile(loss="mae", optimizer=Adam(
             lr=learning_rate), metrics=["mae"])

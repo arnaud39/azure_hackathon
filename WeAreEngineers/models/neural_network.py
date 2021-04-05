@@ -15,9 +15,9 @@ def get_model():
         neural_network.add(Dense(
             30,
             activation="relu",
-            kernel_regularizer=regularizers.l1_l2(l1=5e-6, l2=1e-5),
-            bias_regularizer=regularizers.l2(1e-5),
-            activity_regularizer=regularizers.l2(1e-5)
+            kernel_regularizer=regularizers.l1_l2(l1=8e-2, l2=8e-2),
+            bias_regularizer=regularizers.l2(8e-2),
+            activity_regularizer=regularizers.l2(8e-2)
         ))
     neural_network.add(Dense(1))
     neural_network.compile(loss="mae", optimizer=Adam(lr=0.0005166664147198357), metrics=["mae"])

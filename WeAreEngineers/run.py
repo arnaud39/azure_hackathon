@@ -63,8 +63,6 @@ def run(model_name: str):
     logger.info(f"  X size: {testing_size_x}")
     logger.info(f"  y size: {testing_size_y}")
     logger.info(X_train_raw.columns)
-    logger.info(y_train.columns)
-    logger.info(X_train[:,np.newaxis].shape)
     try:
         model = importlib.import_module(
             name="WeAreEngineers.models." + model_name
