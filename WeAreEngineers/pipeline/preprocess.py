@@ -35,6 +35,11 @@ def preprocess_data(
     data["water_df"].rename(columns={
                             'First Tooltip': 'Population using at least basic drinking-water services (%)'}, inplace=True)
     data["water_df"].drop(columns='Indicator', inplace=True)
+    # process cleanFuelAndTech.csv
+    data["fueltech_df"].rename(columns={
+                            'First Tooltip': 'Proportion of population with primary reliance on clean fuels and '
+                                             'technologies (%)'}, inplace = True)
+    data["fueltech_df"].drop(columns='Indicator', inplace=True)
     return data
 
 
