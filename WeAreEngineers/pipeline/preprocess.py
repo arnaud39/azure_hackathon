@@ -2,6 +2,7 @@ import pandas as pd
 from functools import reduce
 import seaborn as sn
 import matplotlib.pyplot as plt
+import numpy as np
 
 def preprocess_data(
     data: dict
@@ -64,5 +65,7 @@ def set_index(
 def get_corr_matric(df):
     """prints out correlation matrix given dataframe"""
     corrMatrix = df.corr()
-    sn.heatmap(corrMatrix, annot=True)
+    mask = np.zeros_like(corrMatrix)
+    mask[np.triu_indices_from(mask)] = True
+    sn.heatmap(corrMatrix, mask=mask, annot=True)
     plt.show()
