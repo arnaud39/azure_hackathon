@@ -1,5 +1,7 @@
 import pandas as pd
 from functools import reduce
+import seaborn as sn
+import matplotlib.pyplot as plt
 
 def preprocess_data(
     data: dict
@@ -58,3 +60,9 @@ def set_index(
 ) -> pd.DataFrame:
     data_indexed = data.set_index("Location")
     return data_indexed
+
+def get_corr_matric(df):
+    """prints out correlation matrix given dataframe"""
+    corrMatrix = df.corr()
+    sn.heatmap(corrMatrix, annot=True)
+    plt.show()

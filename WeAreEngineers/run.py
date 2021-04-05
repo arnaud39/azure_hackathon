@@ -1,5 +1,5 @@
 from .pipeline.load_files import load_data
-from .pipeline.preprocess import preprocess_data, join_data, set_index
+from .pipeline.preprocess import preprocess_data, join_data, set_index, get_corr_matric
 from .pipeline.config_utils import split_x_y, split_train_test_valid, scale_data
 from .models.compute_score import compute_score
 from .models.base_models import KerasModel
@@ -23,6 +23,7 @@ def run(model_name: str):
 
     data = preprocess_data(load_data())
     data_joined = join_data(data)
+    get_corr_matric(data_joined)
     data_indexed = set_index(data_joined)
     logger.info(data_indexed.columns)
 
