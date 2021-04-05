@@ -1,0 +1,16 @@
+neural_network_search
+{'activation': 'relu', 'learning_rate': 0.0007328785246855783, 'n_hidden': 6, 'n_neurons': 11}neural_network_search
+{'activation': 'relu', 'learning_rate': 0.0007328785246855783, 'n_hidden': 6, 'n_neurons': 11}neural_network_search
+{'activation': 'relu', 'learning_rate': 0.0007328785246855783, 'n_hidden': 6, 'n_neurons': 11}neural_network_search
+{'activation': 'sigmoid', 'learning_rate': 0.000420607628866623, 'n_hidden': 2, 'n_neurons': 6}neural_network_search
+{'activation': 'sigmoid', 'learning_rate': 0.000420607628866623, 'n_hidden': 2, 'n_neurons': 6}neural_network_search
+{'activation': 'sigmoid', 'learning_rate': 0.0029806162555495, 'n_hidden': 2, 'n_neurons': 14}neural_network_search
+{'activation': 'sigmoid', 'learning_rate': 0.000420607628866623, 'n_hidden': 2, 'n_neurons': 6}neural_network_search
+{'activation': 'sigmoid', 'learning_rate': 0.0029806162555495, 'n_hidden': 2, 'n_neurons': 14}neural_network_search
+{'activation': 'sigmoid', 'learning_rate': 0.000420607628866623, 'n_hidden': 2, 'n_neurons': 6}neural_network_search
+{'activation': 'sigmoid', 'learning_rate': 0.0029806162555495, 'n_hidden': 2, 'n_neurons': 14}neural_network_search
+{'activation': 'sigmoid', 'learning_rate': 0.000420607628866623, 'n_hidden': 2, 'n_neurons': 6}neural_network_search
+{'activation': 'sigmoid', 'learning_rate': 0.0029806162555495, 'n_hidden': 2, 'n_neurons': 14}neural_network_search
+{'activation': 'sigmoid', 'learning_rate': 0.0029806162555495, 'n_hidden': 2, 'n_neurons': 14}neural_network_search
+{'activation': 'sigmoid', 'learning_rate': 0.0029806162555495, 'n_hidden': 2, 'n_neurons': 14}neural_network_search
+{'activation': 'sigmoid', 'learning_rate': 0.0029806162555495, 'n_hidden': 2, 'n_neurons': 14}

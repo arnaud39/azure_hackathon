@@ -17,7 +17,7 @@ def get_model():
         "n_hidden": range(2, 10),
         "n_neurons": list(range(5, 100)),
         "learning_rate": reciprocal(3e-4, 3e-3),
-        "activation": ["relu","logistic","tanh"],
+        "activation": ["relu","sigmoid","tanh"],
     }
 
     def build_model(
@@ -41,7 +41,7 @@ def get_model():
     keras_reg = KerasRegressor(build_model)
     search = RandomizedSearchCV(keras_reg,
                                 param_distribs,
-                                n_iter=100,
+                                n_iter=200,
                                 cv=2,
                                 scoring="neg_mean_absolute_error")
 

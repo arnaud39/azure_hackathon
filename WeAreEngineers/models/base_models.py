@@ -74,8 +74,6 @@ class KerasModel:
         """Use the model."""
         pred = self.model.predict(*args, **kwargs)
         # Flatten the prediction if it's a column vector for coherence with sklearn
-        if pred.shape[1] == 1:
-            return pred.flatten()
         return pred
 
     def best_params(self):

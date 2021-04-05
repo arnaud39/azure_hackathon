@@ -14,8 +14,8 @@ import numpy as np
 
 logger = logging.getLogger(__name__)
 
-def run(model_name: str):
 
+def run(model_name: str):
 
     if logger.getEffectiveLevel() <= logging.INFO:
         os.system("cls" if os.name == "nt" else "clear")
@@ -34,6 +34,16 @@ def run(model_name: str):
     X_validate, _ = scale_data(X_validate_raw, scaler)
     X_test, _ = scale_data(X_test_raw, scaler)
 
+    y_train_np = y_train.to_numpy()
+    y_validate_np = y_validate.to_numpy()
+    y_test_np = y_test.to_numpy()
+    # sklearn doesn't like 1d column vectors
+    if y_train_np.shape[1] == 1:
+        y_train_np = y_train_np.flatten()
+    if y_test_np.shape[1] == 1:
+        y_test_np = y_test_np.flatten()
+    if y_validate_np.shape[1] == 1:
+        y_validate_np = y_validate_np.flatten()
     training_size_x = X_train.shape
     testing_size_x = X_test.shape
     validation_size_x = X_validate.shape
@@ -54,7 +64,7 @@ def run(model_name: str):
     logger.info(f"  y size: {testing_size_y}")
     logger.info(X_train_raw.columns)
     logger.info(y_train.columns)
-
+    logger.info(X_train[:,np.newaxis].shape)
     try:
         model = importlib.import_module(
             name="WeAreEngineers.models." + model_name
@@ -64,18 +74,22 @@ def run(model_name: str):
             f"The model {model_name} doesn't exist") from e
 
     if "search" in model_name:
+        model.fit(X_train, y_train_np, validation_data=(
+            np.append(X_validate, X_test, axis=0), np.append(y_validate_np, y_test_np)))
         optimum = model.best_params()
         file = open("best_params.txt", "a")
         file.write(model_name + "\n" + str(optimum))
         file.close()
-        model.fit(X_train,y_train, validation_data=(np.append(X_validate, X_test), np.append(y_validate,y_test)))
 
     elif isinstance(model, KerasModel):
-        model.fit(X_train,y_train, validation_data=(X_validate, y_validate))
+        model.fit(X_train, y_train_np, validation_data=(X_validate, y_validate_np))
     else:
-        model.fit(np.append(X_train, X_validate, axis=0),np.append(y_train,y_validate))
+        model.fit(np.append(X_train, X_validate, axis=0),
+                  np.append(y_train_np, y_validate_np))
     logger.info("MAE:")
     logger.info(compute_score(model, y_test, X_test))
 
-    perm = PermutationImportance(model, random_state=1, scoring="neg_mean_absolute_error").fit(X_train,y_train)
-    print(eli5.format_as_dataframe(eli5.explain_weights(perm, feature_names = X_train_raw.columns.tolist())))
+    perm = PermutationImportance(
+        model, random_state=1, scoring="neg_mean_absolute_error").fit(X_train, y_train_np)
+    print(eli5.format_as_dataframe(eli5.explain_weights(
+        perm, feature_names=X_train_raw.columns.tolist())))

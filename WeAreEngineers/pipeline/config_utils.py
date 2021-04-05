@@ -41,8 +41,8 @@ def split_train_test_valid(
 
 def scale_data(
     data: pd.DataFrame,
-    scaler: sklearn.preprocessing._data.MinMaxScaler = None
-) -> Tuple[pd.DataFrame, sklearn.preprocessing._data.MinMaxScaler]:
+    scaler: Any = None
+) -> Tuple[pd.DataFrame, Any]:
     if scaler is None:
         scaler = sklearn.preprocessing.MinMaxScaler()
         scaler.fit(data)
