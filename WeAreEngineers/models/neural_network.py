@@ -14,13 +14,13 @@ def get_model():
     for _ in range(4):
         neural_network.add(Dense(
             30,
-            activation="relu",
-            kernel_regularizer=regularizers.l1_l2(l1=8e-2, l2=8e-2),
-            bias_regularizer=regularizers.l2(8e-2),
-            activity_regularizer=regularizers.l2(8e-2)
+            activation="tanh",
+            kernel_regularizer=regularizers.l1_l2(l1=4e-2, l2=2e-2),
+            bias_regularizer=regularizers.l2(2e-2),
+            activity_regularizer=regularizers.l2(2e-2)
         ))
     neural_network.add(Dense(1))
-    neural_network.compile(loss="mae", optimizer=Adam(lr=0.0005166664147198357), metrics=["mae"])
+    neural_network.compile(loss="mae", optimizer=Adam(lr=0.0018467180037601903), metrics=["mae"])
 
     model = KerasModel(
         model=neural_network,
